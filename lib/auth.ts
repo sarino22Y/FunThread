@@ -11,6 +11,17 @@ export const authOptions: AuthOptions = {
       GithubProvider({
         clientId: env.GITHUB_ID,
         clientSecret: env.GITHUB_SECRET,
+        profile(profile) {
+          console.log(profile);
+          return {
+            id: profile.id.toString(),
+            username: profile.login,
+            name: profile.name,
+            email: profile.email,
+            image: profile.avatar_url,
+          };
+          
+        },
         httpOptions: {
             timeout: 60000,
           },
