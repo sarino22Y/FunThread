@@ -37,7 +37,7 @@ const WritePostForm = ({ user, onSubmit }: WritePostFormProps) => {
     event.preventDefault(); // prevent the default form submission
     const values = form.getValues(); // get form values
     const postId = await onSubmit(values);
-    router.push(`/post/${postId}`);
+    router.push(`/posts/${postId}`);
   }
 
   return (
