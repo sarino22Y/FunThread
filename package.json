@@ -10,6 +10,7 @@
     "prisma:seed": "prisma db seed"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.4.0",
     "@next-auth/prisma-adapter": "^1.0.7",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-checkbox": "^1.0.4",
@@ -30,9 +31,10 @@
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.51.4",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.23.5"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
@@ -46,7 +48,7 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
-  "prisma" : {
-    "seed":"npx ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  "prisma": {
+    "seed": "npx ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }
