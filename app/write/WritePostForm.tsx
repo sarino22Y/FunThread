@@ -38,6 +38,7 @@ const WritePostForm = ({ user, onSubmit }: WritePostFormProps) => {
     const values = form.getValues(); // get form values
     const postId = await onSubmit(values);
     router.push(`/posts/${postId}`);
+    router.refresh();
   }
 
   return (
