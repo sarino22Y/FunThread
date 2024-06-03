@@ -1,12 +1,13 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { UserProfile } from '@/src/query/user.query';
+import Link from 'next/link';
 import React, { PropsWithChildren } from 'react'
 
 const removeHttp = (url : string) => {
     return url.replace(/(^\w+:|^)\/\//,'');
 }
 
-const Profile = ({user} : PropsWithChildren<{user: UserProfile}>) => {
+const Profile = ({user, children} : PropsWithChildren<{user: UserProfile}>) => {
   return (
     <div className='mt-4 container'>
       <div className='flex gap-2 items-start justify-between'>
@@ -21,6 +22,42 @@ const Profile = ({user} : PropsWithChildren<{user: UserProfile}>) => {
                 </AvatarFallback>
             </Avatar>
       </div>
+      {
+        user.bio ? (
+          <p>{user.bio}</p>
+        ) : (
+          <p className='text-muted-foreground'>no bio</p>
+        )
+      }
+      <div className='flex items-center gap-2 mt-4'>
+        <div className='flex -space-x-2'>
+          {user.followeds.map((f) => (
+            <Avatar
+            size="sm"
+            className='border-2 border-background'
+            key={f.follower.id}
+            >
+              {f.follower.image ? (
+                <AvatarImage src={f.follower.image} alt={f.follower.id} />
+              ): null}
+              <AvatarFallback>
+                {f.follower.username.slice(0, 2).toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
+          ))}
+        </div>
+        <p className='text-muted-foreground'>{' . '}</p>
+        <p className='text-muted-foreground'>{user._count.followeds} folowers</p>
+        {user.link ? (
+          <>
+            <p className='text-muted-foreground'>{' . '}</p>
+            <Link className='text-muted-foreground hover:underline' href={user.link}>
+              {removeHttp(user.link)}
+            </Link>
+          </>
+        ) : null }
+      </div>
+      {children}
     </div>
   )
 }
