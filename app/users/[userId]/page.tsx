@@ -8,14 +8,34 @@ import { Button } from "@/components/ui/button";
 import { followeUser } from "./follow.action";
 import { redirect } from "next/navigation";
 import Post from "@/src/feature/post/Post";
+import { Metadata } from "next";
+
+export const generateMetadata = async ({
+  params,
+} : PageParams) : Promise<Metadata> => {
+  console.log("PARAMETRE ", params);
+  
+  const user = await getUserProfile(params.userId);
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+  
+  return {
+    title: `${user.name} (${user.username})`,
+    description: "Ligne de conversation amusante pour le DEV",
+  }
+}
+
+type PageParams = {
+  params: {
+    userId: string;
+  }
+}
 
 export default async function UserPage({
   params,
-}: {
-  params: {
-    userId: string;
-  };
-}) {
+}: PageParams) {
   const session = await getAuthSession();
   const user = await getUserProfile(params.userId);
 

@@ -12,7 +12,7 @@ const Header = async () => {
         <header className='border-b border-b-accent z-20 fixed top-0 bg-background w-full'>
             <div className='container flex items-center py-2 max-w-lg m-auto gap-1'>
                 <Link href='/' className='text-2xl font-bold mr-auto'>
-                    Githread
+                    FunThread
                 </Link>
 
                 {session?.user ? (

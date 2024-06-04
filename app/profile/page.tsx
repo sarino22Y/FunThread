@@ -1,6 +1,6 @@
 
 import { getAuthSession } from '@/lib/auth';
-import { getUserProfile } from '@/src/query/user.query';
+import { getUser, getUserProfile } from '@/src/query/user.query';
 import React from 'react'
 import Profile from '../users/[userId]/Profile';
 import Link from 'next/link';
@@ -8,6 +8,21 @@ import { notFound } from 'next/navigation';
 import Post from '@/src/feature/post/Post';
 import { buttonVariants } from '@/components/ui/button';
 import clsx from 'clsx';
+import { Metadata } from 'next';
+
+export const generateMetadata = async () : Promise<Metadata> => {
+  
+  const user = await getUser();
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+  
+  return {
+    title: `${user.name}`,
+    description: "Ligne de conversation amusante pour le DEV",
+  }
+}
 
 export default async function ProfilePage() {
   const session = await getAuthSession();
