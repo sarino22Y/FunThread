@@ -21,7 +21,7 @@ export default function RootLayout({
   children, modal,
 }: LayoutProps) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full" suppressHydrationWarning={true}>
       <body className={clsx(inter.className, 'bg-background h-full')}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex flex-col h-full">
