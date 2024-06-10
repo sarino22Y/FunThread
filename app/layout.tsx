@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 type LayoutProps = {
   children: React.ReactNode;
-  modal?: React.ReactNode;
+  modal: React.ReactNode;
 };
 
 export default function RootLayout({

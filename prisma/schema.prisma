@@ -4,9 +4,17 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// Pour SQLITE
+// datasource db {
+//   provider = "sqlite"
+//   url      = "file:./dev.db"
+// }
+
+
+// prisma/schema.prisma
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
 }
 
 // NEXTAUTH
