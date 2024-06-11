@@ -72,7 +72,7 @@ export const ProfileForm = ({ onSubmit, user }: ProfileFormProps) => {
                 name="username"
                 render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Nom d'utilisateur</FormLabel>
+                        <FormLabel>{"Nom d'utilisateur"}</FormLabel>
                         <FormControl>
                             <Input placeholder="username" {...field} />
                         </FormControl>
