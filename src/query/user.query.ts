@@ -19,8 +19,7 @@ export const getUser = async () => {
   const session = await getAuthSession();
 
   if (!session?.user.id) {
-    // throw new Error("User not found");
-    return NotFound();
+    throw new Error("User not found");
   }
 
   const user = await prisma.user.findUniqueOrThrow({

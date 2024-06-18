@@ -21,8 +21,8 @@ export default function Error({
             <AlertTriangle />
             <div className='ml-5'>
                 <AlertTitle>Désolé</AlertTitle>
-                <AlertDescription>
-                    Une erreur s'est produite!
+                <AlertDescription>                    
+                    {"Une erreur s'est produite!"}
                 </AlertDescription>
             </div>
         </Alert>

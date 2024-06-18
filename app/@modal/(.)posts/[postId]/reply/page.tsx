@@ -12,6 +12,10 @@ export default async function Page({
     }) {
     const user = await getUser();
 
+    if (!user) {
+        return <div>{"Chargement de l'utilisateur..."}</div>;
+    }
+
     return <ReplyModal 
         user={user} 
         createReply={async (values) => {
