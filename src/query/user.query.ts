@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { Prisma } from "prisma/prisma-client";
 import { postSelectQuery } from "./post.query";
 import { cache } from "react";
+import NotFound from "@/app/not-found";
 
 const userQuery = {
   id: true,
@@ -18,7 +19,8 @@ export const getUser = async () => {
   const session = await getAuthSession();
 
   if (!session?.user.id) {
-    throw new Error("User not found");
+    // throw new Error("User not found");
+    return NotFound();
   }
 
   const user = await prisma.user.findUniqueOrThrow({
